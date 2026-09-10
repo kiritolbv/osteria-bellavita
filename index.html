@@ -296,6 +296,7 @@
                     <input type="hidden" name="_template" value="table">
                     <input type="hidden" name="_next" value="https://kiritolbv.github.io/osteria-bellavita/?sent=1">
                     <input type="hidden" name="_autoresponse" value="Merci pour votre message. Nous avons bien reçu votre demande pour Osteria Bellavita et nous vous répondrons rapidement.">
+                    <input type="hidden" name="_replyto" id="replyto">
 
                     <div class="form-group">
                         <label for="name">Votre nom</label>
@@ -397,6 +398,8 @@
         setTheme(savedTheme || 'italian');
 
         const contactForm = document.querySelector('.contact-form');
+        const visitorEmail = document.querySelector('#email');
+        const replyTo = document.querySelector('#replyto');
         const formStatus = document.querySelector('.form-status');
         const successToast = document.querySelector('#success-toast');
         let toastTimeout;
@@ -421,6 +424,10 @@
             showSuccessToast();
             window.history.replaceState({}, document.title, window.location.pathname);
         }
+
+        contactForm.addEventListener('submit', () => {
+            replyTo.value = visitorEmail.value;
+        });
     </script>
 
 </body>
