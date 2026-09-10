@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Osteria Bellavita | Restaurant italien</title>
+    <meta name="description" content="Osteria Bellavita, une table italienne généreuse au coeur de Lyon.">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <header class="header">
+        <nav class="navbar container">
+
+            <a href="#" class="logo">
+                OSTERIA<span>BELLAVITA</span>
+            </a>
+
+            <ul class="nav-links">
+                <li><a href="#accueil">Accueil</a></li>
+                <li><a href="#apropos">Notre histoire</a></li>
+                <li><a href="#realisations">Le menu</a></li>
+                <li><a href="#contact">Réserver</a></li>
+            </ul>
+
+            <a href="#contact" class="nav-button">
+                Réserver une table
+            </a>
+
+            <div class="theme-controls">
+                <label for="theme-select">Thème</label>
+                <select id="theme-select" aria-label="Choisir un thème">
+                    <option value="italian">Tricolore italien</option>
+                    <option value="dark">Sombre</option>
+                    <option value="darker">Plus sombre</option>
+                    <option value="slate">Ardoise</option>
+                    <option value="blue">Bleu</option>
+                    <option value="ocean">Océan</option>
+                    <option value="forest">Forêt</option>
+                    <option value="purple">Violet</option>
+                    <option value="red">Rubis</option>
+                    <option value="amber">Ambre</option>
+                    <option value="rose">Rose</option>
+                </select>
+            </div>
+
+        </nav>
+    </header>
+
+
+    <!-- Hero -->
+    <main>
+
+        <section id="accueil" class="hero">
+
+            <div class="hero-content container">
+
+                <div class="hero-text">
+
+                    <p class="hero-subtitle">
+                        CUCINA ITALIANA · LYON
+                    </p>
+
+                    <h1>
+                        L'Italie se déguste
+                        <span>à votre table.</span>
+                    </h1>
+
+                    <p class="hero-description">
+                        Des recettes de famille, des produits de saison et
+                        le goût des grandes tablées méditerranéennes.
+                    </p>
+
+                    <div class="hero-buttons">
+                        <a href="#realisations" class="button button-primary">
+                            Découvrir le menu
+                        </a>
+
+                        <a href="#contact" class="button button-secondary">
+                            Réserver une table
+                        </a>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- À propos -->
+        <section id="apropos" class="section">
+
+            <div class="container about">
+
+                <div class="about-image">
+                    <img
+                        class="about-image-photo"
+                        src="https://images.unsplash.com/photo-1550966871-3ed3cdb5ed0c?auto=format&fit=crop&w=1200&q=85"
+                        alt="Salle lumineuse d'une trattoria italienne"
+                    >
+                </div>
+
+                <div class="about-content">
+
+                    <p class="section-label">
+                        L'OSTERIA
+                    </p>
+
+                    <h2>
+                        Une cuisine sincère,
+                        un accueil comme en Italie
+                    </h2>
+
+                    <p>
+                        Bellavita est une trattoria contemporaine où l'on
+                        vient partager un plat de pâtes, un verre de vin et
+                        quelques heures hors du temps.
+                    </p>
+
+                    <p>
+                        Notre pâte est pétrie chaque matin, nos sauces
+                        mijotent doucement et nos produits arrivent tout
+                        droit de petits producteurs italiens.
+                    </p>
+
+                    <a href="#contact" class="text-link">
+                        Découvrir notre histoire →
+                    </a>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- Réalisations -->
+        <section id="realisations" class="section">
+
+            <div class="container">
+
+                <div class="section-heading">
+
+                    <p class="section-label">
+                        I PIATTI DELLA CASA
+                    </p>
+
+                    <h2>
+                        Les grands classiques de Bellavita
+                    </h2>
+
+                    <p>
+                        Des recettes iconiques d'Italie, servies avec le goût
+                        des produits simples et parfaitement travaillés.
+                    </p>
+
+                </div>
+
+
+                <div class="menu-grid">
+
+                    <article class="menu-card">
+                        <img class="menu-image" src="https://images.unsplash.com/photo-1551183053-bf91a1d81141?auto=format&fit=crop&w=900&q=85" alt="Tagliatelles fraîches dans une assiette blanche" loading="lazy">
+                        <div class="menu-info">
+                            <h3>Tagliatelle al ragù</h3>
+                            <p>Pâtes fraîches, ragù de boeuf mijoté six heures et parmesan 24 mois.</p>
+                        </div>
+                    </article>
+
+                    <article class="menu-card">
+                        <img class="menu-image" src="https://images.unsplash.com/photo-1574071318508-1cdbab80d002?auto=format&fit=crop&w=900&q=85" alt="Pizza napolitaine avec basilic frais" loading="lazy">
+                        <div class="menu-info">
+                            <h3>Pizza Margherita</h3>
+                            <p>Tomates San Marzano, fior di latte, basilic frais et huile d'olive.</p>
+                        </div>
+                    </article>
+
+                    <article class="menu-card">
+                        <img class="menu-image" src="https://images.unsplash.com/photo-1473093295043-cdd812d0e601?auto=format&fit=crop&w=900&q=85" alt="Spaghetti carbonara crémeux avec poivre noir" loading="lazy">
+                        <div class="menu-info">
+                            <h3>Spaghetti alla carbonara</h3>
+                            <p>Guanciale croustillant, pecorino romano, jaune d'oeuf et poivre noir.</p>
+                        </div>
+                    </article>
+
+                    <article class="menu-card">
+                        <img class="menu-image" src="https://images.unsplash.com/photo-1574894709920-11b28e7367e3?auto=format&fit=crop&w=900&q=85" alt="Lasagnes italiennes gratinées sorties du four" loading="lazy">
+                        <div class="menu-info">
+                            <h3>Lasagna della nonna</h3>
+                            <p>Ragù maison, pâte fine, béchamel et parmigiano reggiano gratiné.</p>
+                        </div>
+                    </article>
+
+                    <article class="menu-card">
+                        <img class="menu-image" src="https://images.unsplash.com/photo-1571877227200-a0d98ea607e9?auto=format&fit=crop&w=900&q=85" alt="Tiramisu italien saupoudré de cacao" loading="lazy">
+                        <div class="menu-info">
+                            <h3>Tiramisù Bellavita</h3>
+                            <p>Mascarpone, biscuits cuillère imbibés de café et cacao amer.</p>
+                        </div>
+                    </article>
+
+                    <article class="menu-card">
+                        <img class="menu-image" src="https://images.unsplash.com/photo-1551024506-0bccd828d307?auto=format&fit=crop&w=900&q=85" alt="Dessert italien coloré servi dans une assiette" loading="lazy">
+                        <div class="menu-info">
+                            <h3>Panna cotta al limone</h3>
+                            <p>Crème vanillée, citron de Sicile et coulis de fruits rouges.</p>
+                        </div>
+                    </article>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- CTA -->
+        <section class="cta">
+
+            <div class="container cta-content">
+
+                <div>
+                    <p class="section-label">
+                        UNA SERATA ?
+                    </p>
+
+                    <h2>
+                        Votre table vous attend.
+                    </h2>
+                </div>
+
+                <a href="#contact" class="button button-light">
+                    Réserver maintenant
+                </a>
+
+            </div>
+
+        </section>
+
+
+        <!-- Contact -->
+        <section id="contact" class="section">
+
+            <div class="container contact">
+
+                <div class="contact-info">
+
+                    <p class="section-label">
+                        PRENOTA IL TUO TAVOLO
+                    </p>
+
+                    <h2>
+                        Venez partager un moment
+                    </h2>
+
+                    <p>
+                        Pour un dîner en amoureux, un déjeuner entre amis
+                        ou une grande tablée, écrivez-nous.
+                    </p>
+
+                    <div class="contact-details">
+
+                        <div>
+                            <strong>Téléphone</strong>
+                            <p>04 78 12 45 90</p>
+                        </div>
+
+                        <div>
+                            <strong>Email</strong>
+                            <p>ciao@osteriabellavita.fr</p>
+                        </div>
+
+                        <div>
+                            <strong>Adresse</strong>
+                            <p>18 rue des Oliviers, 69002 Lyon</p>
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- FormSubmit active ce formulaire avec cet identifiant. -->
+                <form
+                    class="contact-form"
+                    action="https://formsubmit.co/2d8e5d7031cdc4e771ccba1508aacca1"
+                    method="POST"
+                >
+
+                    <input type="hidden" name="_subject" value="Nouvelle demande pour Osteria Bellavita">
+                    <input type="hidden" name="_captcha" value="false">
+                    <input type="hidden" name="_template" value="table">
+
+                    <div class="form-group">
+                        <label for="name">Votre nom</label>
+                        <input
+                            type="text"
+                            id="name"
+                            name="nom"
+                            placeholder="Mario Rossi"
+                            required
+                        >
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Votre email</label>
+                        <input
+                            type="email"
+                            id="email"
+                            name="email"
+                            placeholder="mario@exemple.fr"
+                            required
+                        >
+                    </div>
+
+                    <div class="form-group">
+                        <label for="message">Réservation ou message</label>
+                        <textarea
+                            id="message"
+                            name="message"
+                            rows="6"
+                            placeholder="Date, nombre de convives, demande particulière..."
+                            required
+                        ></textarea>
+                    </div>
+
+                    <button type="submit" class="button button-primary">
+                        Envoyer ma demande
+                    </button>
+
+                </form>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- Footer -->
+    <footer class="footer">
+
+        <div class="container footer-content">
+
+            <div>
+                <a href="#" class="logo">
+                    OSTERIA<span>BELLAVITA</span>
+                </a>
+
+                <p>
+                    La cucina italiana, con il cuore.
+                </p>
+            </div>
+
+            <div class="footer-links">
+                <a href="#accueil">Accueil</a>
+                <a href="#realisations">Le menu</a>
+                <a href="#contact">Réserver</a>
+            </div>
+
+        </div>
+
+        <div class="container copyright">
+            © 2026 Osteria Bellavita — Tous droits réservés.
+        </div>
+
+    </footer>
+
+    <script>
+        const themeSelect = document.querySelector('#theme-select');
+        const availableThemes = [...themeSelect.options].map((option) => option.value);
+        const savedTheme = localStorage.getItem('bellavita-theme');
+
+        function setTheme(theme) {
+            const selectedTheme = availableThemes.includes(theme) ? theme : 'dark';
+            document.body.dataset.theme = selectedTheme;
+            themeSelect.value = selectedTheme;
+            localStorage.setItem('bellavita-theme', selectedTheme);
+        }
+
+        themeSelect.addEventListener('change', () => setTheme(themeSelect.value));
+
+        setTheme(savedTheme || 'italian');
+    </script>
+
+</body>
+</html>
