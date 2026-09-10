@@ -507,59 +507,69 @@ a {
     opacity: 0.65;
 }
 
-.modal-open {
-    overflow: hidden;
-}
-
-.success-modal[hidden] {
+.success-toast[hidden] {
     display: none;
 }
 
-.success-modal {
+.success-toast {
     position: fixed;
-    inset: 0;
+    top: 24px;
+    left: 50%;
     z-index: 2000;
-    display: grid;
-    place-items: center;
-    padding: 24px;
-    background: rgba(24, 59, 41, 0.58);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    width: min(560px, calc(100% - 32px));
+    padding: 16px 48px 16px 20px;
+    color: #ffffff;
+    background: #16834b;
+    border-left: 6px solid #c83d3d;
+    box-shadow: 0 16px 35px rgba(24, 59, 41, 0.25);
+    opacity: 0;
+    transform: translate(-50%, calc(-100% - 30px));
+    transition: opacity 0.35s ease, transform 0.35s ease;
 }
 
-.success-modal-content {
-    position: relative;
-    width: min(460px, 100%);
-    padding: 45px;
-    background: var(--surface-background);
-    border-top: 6px solid #16834b;
-    box-shadow: 0 24px 70px rgba(24, 59, 41, 0.25);
+.success-toast.is-visible {
+    opacity: 1;
+    transform: translate(-50%, 0);
 }
 
-.success-modal-content h2 {
-    margin-bottom: 15px;
-    color: #c83d3d;
-    font-size: clamp(30px, 5vw, 44px);
-    line-height: 1;
+.success-toast strong {
+    color: #fff8e8;
+    white-space: nowrap;
 }
 
-.success-modal-content > p:not(.section-label) {
-    margin-bottom: 28px;
-    color: var(--muted-text);
+.success-toast span {
+    font-size: 14px;
 }
 
-.success-modal-close {
+.success-toast-close {
     position: absolute;
-    top: 12px;
+    top: 50%;
     right: 16px;
+    transform: translateY(-50%);
     border: 0;
-    color: var(--strong-text);
+    color: #ffffff;
     background: transparent;
-    font-size: 28px;
+    font-size: 24px;
     line-height: 1;
     cursor: pointer;
 }
 
-.success-modal-button {
-    min-height: 44px;
+@media (max-width: 600px) {
+
+    .success-toast {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 2px;
+        padding-right: 44px;
+    }
+
+    .success-toast strong {
+        white-space: normal;
+    }
+
 }
 
 

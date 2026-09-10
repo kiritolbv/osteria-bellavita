@@ -375,14 +375,10 @@
 
     </footer>
 
-    <div class="success-modal" id="success-modal" role="dialog" aria-modal="true" aria-labelledby="success-title" hidden>
-        <div class="success-modal-content">
-            <button class="success-modal-close" type="button" aria-label="Fermer">&times;</button>
-            <p class="section-label">GRAZIE</p>
-            <h2 id="success-title">Message bien envoyé</h2>
-            <p>Votre demande a bien été transmise au gérant. Un email de confirmation vient aussi de vous être envoyé.</p>
-            <button class="button button-primary success-modal-button" type="button">Retourner au site</button>
-        </div>
+    <div class="success-toast" id="success-toast" role="status" aria-live="polite" hidden>
+        <strong>Message bien envoyé</strong>
+        <span>Votre demande a été transmise au gérant.</span>
+        <button class="success-toast-close" type="button" aria-label="Fermer">&times;</button>
     </div>
 
     <script>
@@ -403,23 +399,31 @@
 
         const contactForm = document.querySelector('.contact-form');
         const formStatus = document.querySelector('.form-status');
-        const successModal = document.querySelector('#success-modal');
-        const closeModalButtons = document.querySelectorAll('.success-modal-close, .success-modal-button');
+        const successToast = document.querySelector('#success-toast');
+        let toastTimeout;
 
-        function closeSuccessModal() {
-            successModal.hidden = true;
-            document.body.classList.remove('modal-open');
+        function closeSuccessToast() {
+            successToast.classList.remove('is-visible');
+            window.clearTimeout(toastTimeout);
+            window.setTimeout(() => {
+                successToast.hidden = true;
+            }, 350);
         }
 
-        closeModalButtons.forEach((button) => {
-            button.addEventListener('click', closeSuccessModal);
-        });
+        document.querySelector('.success-toast-close').addEventListener('click', closeSuccessToast);
 
-        successModal.addEventListener('click', (event) => {
-            if (event.target === successModal) {
-                closeSuccessModal();
-            }
-        });
+        function showSuccessToast() {
+            successToast.hidden = false;
+            requestAnimationFrame(() => successToast.classList.add('is-visible'));
+            toastTimeout = window.setTimeout(closeSuccessToast, 5000);
+        }
+
+        function buildSubmissionData() {
+            const formData = new FormData(contactForm);
+            const visitorEmail = formData.get('email');
+            formData.append('_replyto', visitorEmail);
+            return formData;
+        }
 
         contactForm.addEventListener('submit', async (event) => {
             event.preventDefault();
@@ -431,7 +435,7 @@
             try {
                 const response = await fetch(contactForm.action, {
                     method: 'POST',
-                    body: new FormData(contactForm),
+                    body: buildSubmissionData(),
                     headers: {
                         Accept: 'application/json'
                     }
@@ -442,8 +446,7 @@
                 }
 
                 contactForm.reset();
-                successModal.hidden = false;
-                document.body.classList.add('modal-open');
+                showSuccessToast();
             } catch (error) {
                 formStatus.textContent = 'Une erreur est survenue. Vérifiez votre connexion puis réessayez.';
             } finally {
