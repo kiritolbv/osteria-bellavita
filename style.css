@@ -496,6 +496,72 @@ a {
     resize: vertical;
 }
 
+.form-status {
+    min-height: 22px;
+    color: #c83d3d;
+    font-size: 13px;
+}
+
+.contact-form button:disabled {
+    cursor: wait;
+    opacity: 0.65;
+}
+
+.modal-open {
+    overflow: hidden;
+}
+
+.success-modal[hidden] {
+    display: none;
+}
+
+.success-modal {
+    position: fixed;
+    inset: 0;
+    z-index: 2000;
+    display: grid;
+    place-items: center;
+    padding: 24px;
+    background: rgba(24, 59, 41, 0.58);
+}
+
+.success-modal-content {
+    position: relative;
+    width: min(460px, 100%);
+    padding: 45px;
+    background: var(--surface-background);
+    border-top: 6px solid #16834b;
+    box-shadow: 0 24px 70px rgba(24, 59, 41, 0.25);
+}
+
+.success-modal-content h2 {
+    margin-bottom: 15px;
+    color: #c83d3d;
+    font-size: clamp(30px, 5vw, 44px);
+    line-height: 1;
+}
+
+.success-modal-content > p:not(.section-label) {
+    margin-bottom: 28px;
+    color: var(--muted-text);
+}
+
+.success-modal-close {
+    position: absolute;
+    top: 12px;
+    right: 16px;
+    border: 0;
+    color: var(--strong-text);
+    background: transparent;
+    font-size: 28px;
+    line-height: 1;
+    cursor: pointer;
+}
+
+.success-modal-button {
+    min-height: 44px;
+}
+
 
 /* ================================
    FOOTER

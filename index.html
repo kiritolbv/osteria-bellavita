@@ -296,6 +296,7 @@
                     <input type="hidden" name="_captcha" value="false">
                     <input type="hidden" name="_template" value="table">
                     <input type="hidden" name="_next" value="https://kiritolbv.github.io/osteria-bellavita/">
+                    <input type="hidden" name="_autoresponse" value="Merci pour votre message. Nous avons bien reçu votre demande pour Osteria Bellavita et nous vous répondrons rapidement.">
 
                     <div class="form-group">
                         <label for="name">Votre nom</label>
@@ -333,6 +334,8 @@
                     <button type="submit" class="button button-primary">
                         Envoyer ma demande
                     </button>
+
+                    <p class="form-status" role="status" aria-live="polite"></p>
 
                 </form>
 
@@ -372,6 +375,16 @@
 
     </footer>
 
+    <div class="success-modal" id="success-modal" role="dialog" aria-modal="true" aria-labelledby="success-title" hidden>
+        <div class="success-modal-content">
+            <button class="success-modal-close" type="button" aria-label="Fermer">&times;</button>
+            <p class="section-label">GRAZIE</p>
+            <h2 id="success-title">Message bien envoyé</h2>
+            <p>Votre demande a bien été transmise au gérant. Un email de confirmation vient aussi de vous être envoyé.</p>
+            <button class="button button-primary success-modal-button" type="button">Retourner au site</button>
+        </div>
+    </div>
+
     <script>
         const themeSelect = document.querySelector('#theme-select');
         const availableThemes = [...themeSelect.options].map((option) => option.value);
@@ -387,6 +400,57 @@
         themeSelect.addEventListener('change', () => setTheme(themeSelect.value));
 
         setTheme(savedTheme || 'italian');
+
+        const contactForm = document.querySelector('.contact-form');
+        const formStatus = document.querySelector('.form-status');
+        const successModal = document.querySelector('#success-modal');
+        const closeModalButtons = document.querySelectorAll('.success-modal-close, .success-modal-button');
+
+        function closeSuccessModal() {
+            successModal.hidden = true;
+            document.body.classList.remove('modal-open');
+        }
+
+        closeModalButtons.forEach((button) => {
+            button.addEventListener('click', closeSuccessModal);
+        });
+
+        successModal.addEventListener('click', (event) => {
+            if (event.target === successModal) {
+                closeSuccessModal();
+            }
+        });
+
+        contactForm.addEventListener('submit', async (event) => {
+            event.preventDefault();
+            const submitButton = contactForm.querySelector('button[type="submit"]');
+            submitButton.disabled = true;
+            submitButton.textContent = 'Envoi en cours...';
+            formStatus.textContent = '';
+
+            try {
+                const response = await fetch(contactForm.action, {
+                    method: 'POST',
+                    body: new FormData(contactForm),
+                    headers: {
+                        Accept: 'application/json'
+                    }
+                });
+
+                if (!response.ok) {
+                    throw new Error('FormSubmit response failed');
+                }
+
+                contactForm.reset();
+                successModal.hidden = false;
+                document.body.classList.add('modal-open');
+            } catch (error) {
+                formStatus.textContent = 'Une erreur est survenue. Vérifiez votre connexion puis réessayez.';
+            } finally {
+                submitButton.disabled = false;
+                submitButton.textContent = 'Envoyer ma demande';
+            }
+        });
     </script>
 
 </body>
