@@ -293,9 +293,8 @@
                 >
 
                     <input type="hidden" name="_subject" value="Nouvelle demande pour Osteria Bellavita">
-                    <input type="hidden" name="_captcha" value="false">
                     <input type="hidden" name="_template" value="table">
-                    <input type="hidden" name="_next" value="https://kiritolbv.github.io/osteria-bellavita/">
+                    <input type="hidden" name="_next" value="https://kiritolbv.github.io/osteria-bellavita/?sent=1">
                     <input type="hidden" name="_autoresponse" value="Merci pour votre message. Nous avons bien reçu votre demande pour Osteria Bellavita et nous vous répondrons rapidement.">
 
                     <div class="form-group">
@@ -418,42 +417,10 @@
             toastTimeout = window.setTimeout(closeSuccessToast, 5000);
         }
 
-        function buildSubmissionData() {
-            const formData = new FormData(contactForm);
-            const visitorEmail = formData.get('email');
-            formData.append('_replyto', visitorEmail);
-            return formData;
+        if (new URLSearchParams(window.location.search).has('sent')) {
+            showSuccessToast();
+            window.history.replaceState({}, document.title, window.location.pathname);
         }
-
-        contactForm.addEventListener('submit', async (event) => {
-            event.preventDefault();
-            const submitButton = contactForm.querySelector('button[type="submit"]');
-            submitButton.disabled = true;
-            submitButton.textContent = 'Envoi en cours...';
-            formStatus.textContent = '';
-
-            try {
-                const response = await fetch(contactForm.action, {
-                    method: 'POST',
-                    body: buildSubmissionData(),
-                    headers: {
-                        Accept: 'application/json'
-                    }
-                });
-
-                if (!response.ok) {
-                    throw new Error('FormSubmit response failed');
-                }
-
-                contactForm.reset();
-                showSuccessToast();
-            } catch (error) {
-                formStatus.textContent = 'Une erreur est survenue. Vérifiez votre connexion puis réessayez.';
-            } finally {
-                submitButton.disabled = false;
-                submitButton.textContent = 'Envoyer ma demande';
-            }
-        });
     </script>
 
 </body>
